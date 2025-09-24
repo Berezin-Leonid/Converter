@@ -1,0 +1,52 @@
+======================
+Structure:
+└── data/
+    └── array_1 (array, shape=(21799, 12, 5000))
+======================
+Arrays info:
+└── data/
+    └── array_1 (array)
+Name               : /data/array_1
+Type               : zarr.core.Array
+Data type          : float32
+Shape              : (21799, 12, 5000)
+Chunk shape        : (1, 12, 5000)
+Order              : C
+Read-only          : True
+Compressor         : Blosc(cname='zstd', clevel=5, shuffle=SHUFFLE, blocksize=0)
+Store type         : zarr.storage.DirectoryStore
+No. bytes          : 5231760000 (4.9G)
+No. bytes stored   : 2382048823 (2.2G)
+Storage ratio      : 2.2
+Chunks initialized : 21799/21799
+
+------------------------------------------------------------
+======================
+======================
+Structure:
+└── data/
+    └── array_1 (array, shape=(21799, 12, 5000))
+======================
+Arrays info:
+└── data/
+    └── array_1 (array)
+Name               : /data/array_1
+Type               : zarr.core.Array
+Data type          : float32
+Shape              : (21799, 12, 5000)
+Chunk shape        : (1, 12, 5000)
+Order              : C
+Read-only          : True
+Compressor         : Blosc(cname='zstd', clevel=5, shuffle=SHUFFLE, blocksize=0)
+Store type         : zarr.storage.DirectoryStore
+No. bytes          : 5231760000 (4.9G)
+No. bytes stored   : 2382048823 (2.2G)
+Storage ratio      : 2.2
+Chunks initialized : 21799/21799
+
+------------------------------------------------------------
+======================
+Check npz time:
+Time of read: 13.266178607940674 seconds
+Check zarr time:
+Time of read: 8.901198863983154 seconds
