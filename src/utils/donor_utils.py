@@ -114,8 +114,15 @@ class NpzArrayDonor(Donor):
         data = np.load(file_path)["arr_0"].astype("float64")
         return data
 
-#class WfdbEcgDonor(Donor):
-class PhysionetEcgDonor(Donor):
-    def __init__(self, shape, amount, batch_size=1, class_item=Item):
-        super().__init__(class_item=class_item)
+
+
+class ChapmanArrayDonor(NpzArrayDonor):
+    def __init__(self, map_path, data_path, batch_size=1, class_item=Item):
+        super().__init__(map_path=map_path, data_path=data_path, batch_size=batch_size, class_item=Item)
+    
+    def _getdata(self, index, info):
+        file_path = info["fpath"]
+        data = np.load(file_path)["arr_0"].astype("float64")
+        data = data.T
+        return data
 
