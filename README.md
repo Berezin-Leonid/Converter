@@ -99,8 +99,7 @@ donor = ZarrArrayDonor(
 
 ```python
 donor = NpzArrayDonor(
-    map_path="map.csv",
-    data_path="/path/to/npz/"
+    map_path="map.csv"
 )
 
 ```
