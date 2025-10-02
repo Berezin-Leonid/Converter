@@ -75,10 +75,18 @@ def convert_chapman():
 
 
 
+def convert_mimic():
+    
+    donor = RawMimicEcgDonor()
+    
+    for i in range(10):
+        print(donor[i])
+
 
 
 if __name__ == "__main__":
     #convert_ptb()
     #check_read_time_ptb()
-    convert_chapman()
+    #convert_chapman()
+    convert_mimic()
 

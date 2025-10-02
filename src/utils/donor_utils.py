@@ -3,6 +3,7 @@ from utils.info_utils import *
 from convert import *
 from tqdm import tqdm
 import numpy as np
+import wfdb
 import uuid
 import zarr
 import csv
@@ -126,3 +127,39 @@ class ChapmanArrayDonor(NpzArrayDonor):
         data = data.T
         return data
 
+
+
+class RawMimicEcgDonor(Donor):
+    def __init__(self, class_item=Item, batch_size=1):
+        super().__init__(class_item=class_item, batch_size=1)
+
+        record_list_path = "/home/ecg_data/credentialed_access_physionet_data/mimic-iv-ecg/1.0/record_list.csv"
+
+        with open(record_list_path, newline="") as f:
+            reader = csv.DictReader(f)
+            self.list = [row for row in reader]
+        
+        self._length = len(self.list)
+
+
+    def __len__(self):
+        return self._length
+
+
+    def _getinfo(self, index):
+        base_path = "/home/ecg_data/credentialed_access_physionet_data/mimic-iv-ecg/1.0/files"
+        obj = self.list[index]
+        subject_id = obj["subject_id"]
+        study_id = obj["study_id"]
+        file_name = obj["file_name"]
+        full_path = os.path.join(base_path,
+                                 f"p{obj['subject_id'][0:4:1]}",
+                                 f"p{obj['subject_id']}",
+                                 f"s{obj['study_id']}",
+                                 f"{obj['file_name']}",
+                                 )
+        self.info, self.data = wfdb.rdsamp(full_path)
+        return self.info
+
+    def _getdata(self, index, info):
+        return self.data
