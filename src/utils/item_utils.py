@@ -34,5 +34,18 @@ class Item_ICL10(Item):
         # add scp_codes
         return info
 
+    def __repr__(self):
+        return f"""
+=======================================
+Info:
+{self.info}
+---------------------------------------
+Disease map:
+{self.icl_format} --> {self.info["scp_codes"]}
+---------------------------------------
+Data:
+{self.data}
+=======================================
+        """
 
 
